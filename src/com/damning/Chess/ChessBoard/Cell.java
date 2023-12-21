@@ -15,7 +15,6 @@ public class Cell {
         this(x, y, null);
 
     }
-
     public Cell(int x, int y, Figure figure) {
         this.x = x;
         this.y = y;
