@@ -15,6 +15,32 @@ public class Cell {
         this(x, y, null);
 
     }
+    public Cell getUp() {
+        return up;
+    }
+    public Cell getDown() {
+        return down;
+    }
+    public Cell getLeft() {
+        return left;
+    }
+    public Cell getRight() {
+        return right;
+    }
+
+    public void setUp(Cell up) {
+        this.up = up;
+    }
+    public void setDown(Cell down) {
+        this.down = down;
+    }
+    public void setLeft(Cell left) {
+        this.left = left;
+    }
+    public void setRight(Cell right) {
+        this.right = right;
+    }
+
     public Cell(int x, int y, Figure figure) {
         this.x = x;
         this.y = y;
@@ -29,7 +55,7 @@ public class Cell {
         return y;
     }
 
-    Figure getFigure() {
+    public Figure getFigure() {
         return figure;
     }
 
