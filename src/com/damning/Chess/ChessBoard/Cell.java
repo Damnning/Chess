@@ -1,16 +1,15 @@
-package com.damning.Chess.Game.ChessBoard;
+package com.damning.Chess.ChessBoard;
 
-import com.damning.Chess.Game.Figure.Figure;
+import com.damning.Chess.Figure.Figure;
 
 public class Cell {
     int x;
-
     int y;
-    Figure figure;
-    Cell up;
-    Cell down;
-    Cell left;
-    Cell right;
+    private Figure figure;
+    private Cell up;
+    private Cell down;
+    private Cell left;
+    private Cell right;
 
     public Cell(int x, int y) {
         this(x, y, null);
@@ -38,4 +37,16 @@ public class Cell {
     public void setFigure(Figure figure) {
         this.figure = figure;
     }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (obj == this) {
+            return true;
+        }
+        if (!(obj instanceof Cell other)) {
+            return false;
+        }
+        return this.x == other.x && this.y == other.y;
+    }
+
 }
