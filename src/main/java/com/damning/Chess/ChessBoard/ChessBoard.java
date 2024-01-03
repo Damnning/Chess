@@ -1,4 +1,4 @@
-package com.damning.Chess.ChessBoard;
+package com.damning.chess.chessboard;
 
 public class ChessBoard {
     Cell head;

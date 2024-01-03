@@ -1,4 +1,4 @@
-package com.damning.Chess.Enums;
+package com.damning.chess.enums;
 
 public enum Color {
     WHITE,

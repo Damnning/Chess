@@ -1,4 +1,4 @@
-package com.damning.Chess.Main;
+package com.damning.chess.main;
 
 public class Main {
     public static void main(String[] args) {

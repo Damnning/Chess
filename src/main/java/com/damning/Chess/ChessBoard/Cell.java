@@ -1,6 +1,6 @@
-package com.damning.Chess.ChessBoard;
+package com.damning.chess.chessboard;
 
-import com.damning.Chess.Figure.Figure;
+import main.java.com.damning.Chess.Figure.Figure;
 
 public class Cell {
     int x;
@@ -27,6 +27,27 @@ public class Cell {
     public Cell getRight() {
         return right;
     }
+    public Cell getUpLeft() {
+        if(up != null && up.left != null) return up.left;
+        if(left != null) return left.up;
+        return null;
+    }
+    public Cell getUpRight() {
+        if(up != null && up.right != null) return up.right;
+        if(right != null) return right.up;
+        return null;
+    }
+    public Cell getDownLeft() {
+        if(down != null && down.left != null) return down.left;
+        if(left != null) return left.down;
+        return null;
+    }
+    public Cell getDownRight() {
+        if(down != null && down.right != null) return down.right;
+        if(right != null) return right.down;
+        return null;
+    }
+
 
     public void setUp(Cell up) {
         this.up = up;
