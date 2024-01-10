@@ -1,11 +1,13 @@
 package com.damning.chess.chessboard;
 
-import main.java.com.damning.Chess.Figure.Figure;
+
+import com.damning.chess.figure.Figure;
 
 public class Cell {
     int x;
     int y;
     private Figure figure;
+    //todo: write method for getting neighbour cell with Direction enum
     private Cell up;
     private Cell down;
     private Cell left;

@@ -35,14 +35,16 @@ javafx {
 }
 
 dependencies {
-
-  testImplementation("org.junit.jupiter:junit-jupiter-api:${junitVersion}")
-  testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:${junitVersion}")
+  testImplementation(platform('org.junit:junit-bom:5.10.1'))
+  testImplementation('org.junit.jupiter:junit-jupiter')
 }
 
 test {
-useJUnitPlatform()}
-
+  useJUnitPlatform()
+  testLogging {
+    events "passed", "skipped", "failed"
+  }
+}
 jlink {
   imageZip = project.file("${buildDir}/distributions/app-${javafx.platform.classifier}.zip")
   options = ['--strip-debug', '--compress', '2', '--no-header-files', '--no-man-pages']

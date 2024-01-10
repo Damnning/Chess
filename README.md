@@ -14,7 +14,7 @@ Board cell can be blocked or with borders on sides, which cant be passed with fi
 | Black | bk | bq | bb | bh | br | bp |
 | White | wk | wq | wb | wh | wr | wp |
 
-Tokens should be separeted with spaces
+Tokens should be separated with spaces
 
 ### Example of board description
 wr wp * * * * bp br\

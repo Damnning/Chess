@@ -1,10 +1,8 @@
 package com.damning.chess.figure;
 
-import main.java.com.damning.Chess.ChessBoard.Cell;
-import main.java.com.damning.Chess.Enums.Color;
-import main.java.com.damning.Chess.Enums.MoveStatus;
-
-import java.util.List;
+import com.damning.chess.chessboard.Cell;
+import com.damning.chess.enums.Color;
+import java.util.function.Consumer;
 
 public class King extends Figure {
     public King(Cell position, Color color) {
@@ -12,34 +10,14 @@ public class King extends Figure {
     }
 
     @Override
-    public void calculatePossibleMoves() {
-        addMove(position.getUp());
-        addMove(position.getUpRight());
-        addMove(position.getRight());
-        addMove(position.getDownRight());
-        addMove(position.getDown());
-        addMove(position.getDownLeft());
-        addMove(position.getLeft());
-        addMove(position.getUpLeft());
+    public void calculateMoves(Consumer<Cell> consumer) {
+        consumer.accept(position.getUp());
+        consumer.accept(position.getUpRight());
+        consumer.accept(position.getRight());
+        consumer.accept(position.getDownRight());
+        consumer.accept(position.getDown());
+        consumer.accept(position.getDownLeft());
+        consumer.accept(position.getLeft());
+        consumer.accept(position.getUpLeft());
     }
-
-    @Override
-    public MoveStatus move(Cell to, List<Figure> figures, Figure king) {
-        Cell previousPosition = position;
-        List<Figure> figuresCopy = List.copyOf(figures);
-        if (possibleMoves.contains(to)) {
-            switchCell(to);
-            for (Figure figure : figuresCopy) {
-                figure.calculatePossibleMoves();
-                if (figure.possibleAttacks.contains(king.position)) {
-                    switchCell(previousPosition);
-                    return MoveStatus.ENDANGERED_KING;
-                }
-            }
-            figures = figuresCopy;
-            return MoveStatus.SUCCESS;
-        }
-        return MoveStatus.ILLEGAL;
-    }
-
 }
