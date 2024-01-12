@@ -1,17 +1,11 @@
 package com.damning.chess.chessboard;
 
 import com.damning.chess.enums.Color;
-import com.damning.chess.enums.Direction;
 import com.damning.chess.figure.Figure;
-import com.damning.chess.figure.King;
+import com.damning.chess.figure.figures.King;
 
-import java.io.BufferedInputStream;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Stack;
 
 public class ChessBoard {
     Cell head;
@@ -47,11 +41,7 @@ public class ChessBoard {
 
     }
 
-    private void readBoardFromFile(String path) throws FileNotFoundException, IOException {
-        try (BufferedInputStream bis = new BufferedInputStream(new FileInputStream(path))) {
 
-        }
-    }
     public Figure getKing(Color color) {
         for (Figure figure : figures) {
             if (figure instanceof King && figure.getColor() == color) {
@@ -66,14 +56,5 @@ public class ChessBoard {
             figure.calculatePossibleMoves();
         }
     }
-    //todo: continue
-    public List<Cell> getLine(Cell from, Direction direction) {
-        List<Cell> cells = new ArrayList<>();
-        Cell current = from;
-        while (current != null) {
-            cells.add(current);
-            //current = current.get(direction);
-        }
-        return cells;
-    }
+
 }
