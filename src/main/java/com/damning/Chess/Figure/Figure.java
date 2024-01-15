@@ -2,17 +2,17 @@ package com.damning.chess.figure;
 
 import com.damning.chess.chessboard.Cell;
 import com.damning.chess.chessboard.ChessBoard;
-import com.damning.chess.enums.Color;
+
 import com.damning.chess.enums.MoveStatus;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.function.BiConsumer;
+
 import java.util.function.Consumer;
 
 public abstract class Figure {
     protected ChessBoard board;
-    protected final Color color;
+    protected final byte color;
     protected Cell position;
     protected List<Cell> possibleMoves;
 
@@ -29,7 +29,12 @@ public abstract class Figure {
         this.position = position;
     }
 
-    public Figure(Cell position, Color color) {
+    /**
+     * @param position - position of the figure
+     * @param color - color of the figure as number 0-9
+     */
+    public Figure(Cell position, byte color) {
+        possibleAttacks = new ArrayList<>();
         movesCount = 0;
         this.position = position;
         this.color = color;
@@ -38,7 +43,7 @@ public abstract class Figure {
     public void calculatePotentialAttacks() {
         potentialAttacks = new ArrayList<>();
         calculateMoves(cell -> {
-            if(cell.getFigure() != null && cell.getFigure().getColor() != color) {
+            if (cell != null && cell.getFigure() != null && cell.getFigure().getColor() != color) {
                 potentialAttacks.add(cell);
             }
         });
@@ -52,7 +57,7 @@ public abstract class Figure {
     abstract public void calculateMoves(Consumer<Cell> consumer); // todo: think about transmitting board
 
     public MoveStatus move(Cell to) {
-        if(possibleMoves.contains(to)) {
+        if (possibleMoves.contains(to)) {
             switchCell(to);
             movesCount++;
             return MoveStatus.SUCCESS;
@@ -81,6 +86,7 @@ public abstract class Figure {
             switchCell(to);
             for (Figure figure : board.getFigures()) {
                 figure.calculatePotentialAttacks();
+                //System.out.println(figure);
                 if (figure.potentialAttacks.contains(kingPosition)) {
                     switchCell(previousPosition);
                     to.setFigure(toFigure);
@@ -93,7 +99,15 @@ public abstract class Figure {
     }
 
 
-    public Color getColor() {
+    public byte getColor() {
         return color;
+    }
+    @Override
+    public String toString() {
+        return this.getClass().getSimpleName() + " " + color;
+    }
+
+    public void setBoard(ChessBoard board) {
+        this.board = board;
     }
 }

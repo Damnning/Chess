@@ -1,7 +1,6 @@
 package com.damning.chess.figure.figures;
 
 import com.damning.chess.chessboard.Cell;
-import com.damning.chess.enums.Color;
 import com.damning.chess.enums.Direction;
 import com.damning.chess.figure.Figure;
 
@@ -9,7 +8,7 @@ import java.util.function.Consumer;
 
 public class Pawn extends Figure {
     private final Direction direction;
-    public Pawn(Cell position, Color color, Direction direction) {
+    public Pawn(Cell position, byte color, Direction direction) {
         super(position, color);
         this.direction = direction;
     }
