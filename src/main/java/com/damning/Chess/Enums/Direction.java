@@ -1,5 +1,8 @@
 package com.damning.chess.enums;
 
+/**
+ * Directions for getting neighbor cells
+ */
 public enum Direction {
     UP,
     RIGHT,

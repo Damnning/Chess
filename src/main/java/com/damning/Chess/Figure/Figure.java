@@ -20,10 +20,6 @@ public abstract class Figure {
     protected List<Cell> potentialAttacks;
     protected int movesCount;
 
-    /**
-     * @param position - position of the figure
-     * @param color    - color of the figure as number 0-9
-     */
     public Figure(Cell position, byte color) {
         movesCount = 0;
         this.position = position;

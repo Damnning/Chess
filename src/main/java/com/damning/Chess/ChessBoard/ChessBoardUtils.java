@@ -7,6 +7,9 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.util.*;
 
+/**
+ * Reads board from file and getting specific cell lists
+ */
 public class ChessBoardUtils implements BoardTokens {
     private static String[][] readBoardArrayFromFile(String path, List<Direction> pawnDirections) {
         try (Scanner scanner = new Scanner(new BufferedInputStream(new FileInputStream(path)))) {

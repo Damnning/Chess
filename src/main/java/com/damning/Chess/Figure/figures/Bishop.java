@@ -8,7 +8,6 @@ import java.util.function.Consumer;
 
 import static com.damning.chess.chessboard.ChessBoardUtils.getLine;
 
-
 public class Bishop extends Figure {
     public Bishop(Cell position, byte color) {
         super(position, color);

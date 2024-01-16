@@ -4,6 +4,9 @@ package com.damning.chess.chessboard;
 import com.damning.chess.enums.Direction;
 import com.damning.chess.figure.Figure;
 
+/**
+ * Cell of the board
+ */
 public class Cell {
     int x;
     int y;

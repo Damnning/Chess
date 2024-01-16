@@ -8,6 +8,9 @@ import com.damning.chess.player.Player;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Game class, putting together all the logic
+ */
 public class Game {
     Figure selectedFigure;
     ChessBoard board;

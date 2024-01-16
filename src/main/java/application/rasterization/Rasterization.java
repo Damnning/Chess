@@ -11,6 +11,9 @@ import javafx.scene.paint.Color;
 
 import java.util.*;
 
+/**
+ * Rasterization of a chess board
+ */
 public class Rasterization {
     final static int WIDTH = 2;
     final static Color BLACK = Color.TAN;

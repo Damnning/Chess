@@ -1,5 +1,8 @@
 package com.damning.chess.chessboard;
 
+/**
+ * Token constants for board parsing
+ */
 public interface BoardTokens {
     String SEPARATOR = "---";
     // Cell tokens

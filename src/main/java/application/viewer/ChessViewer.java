@@ -8,6 +8,9 @@ import javafx.stage.Stage;
 
 import java.util.Objects;
 
+/**
+ * Application starting point
+ */
 public class ChessViewer extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception {
