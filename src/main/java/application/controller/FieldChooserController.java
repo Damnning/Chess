@@ -18,8 +18,8 @@ public class FieldChooserController {
     MainWindowController controller;
     Stage stage;
 
-    final String CLASSIC = "src/main/resources/java/com/damning/chess/chessboard/classic.txt";
-    final String RUSSIAN = "src/main/resources/java/com/damning/chess/chessboard/russian.txt";
+    final String CLASSIC = "src\\main\\resources\\java\\com\\damning\\chess\\chessboard\\classic.txt";
+    final String RUSSIAN = "src\\main\\resources\\java\\com\\damning\\chess\\chessboard\\russian.txt";
     private String chosenField;
     @FXML
     void chooseClassic(ActionEvent event) {
@@ -45,7 +45,7 @@ public class FieldChooserController {
     }
     private void choose(String path){
         chosenField = path;
-        field.setText(chosenField.split("/")[chosenField.split("/").length - 1]);
+        field.setText(chosenField.split("\\\\")[chosenField.split("\\\\").length - 1]);
         startBt.setDisable(false);
     }
     public void setPath(MainWindowController controller, Stage stage) {
