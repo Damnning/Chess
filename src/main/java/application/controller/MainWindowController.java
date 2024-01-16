@@ -51,25 +51,28 @@ public class MainWindowController {
     void onCanvasClicked(MouseEvent event) {
         if (game != null) {
             Cell selectedCell = game.getCell(getNormalizedX(event.getX()), getNormalizedY(event.getY()));
-            if (game.getSelectedFigure() == null) {
-                game.selectFigure(selectedCell.getFigure());
-            }else if(game.getSelectedFigure().getPosition().equals(selectedCell)){
-                game.deselectFigure();
-            }else if(game.getSelectedFigure().canMoveTo(selectedCell)){
-                game.move(game.getSelectedFigure(), selectedCell);
-                game.deselectFigure();
-            }
-            if (game.getSelectedFigure() != null)
-                Rasterization.drawPossibleMoves(field.getGraphicsContext2D(), game.getBoard(), game.getSelectedFigure());
-            else {
-                gameFinished = game.checkWin();
-                Rasterization.drawBoard(field.getGraphicsContext2D(), game.getBoard());
-            }
-            if (gameFinished) {
-                showWinDialog();
+            if (selectedCell != null) {
+                if (game.getSelectedFigure() == null) {
+                    game.selectFigure(selectedCell.getFigure());
+                } else if (game.getSelectedFigure().getPosition().equals(selectedCell)) {
+                    game.deselectFigure();
+                } else if (game.getSelectedFigure().canMoveTo(selectedCell)) {
+                    game.move(game.getSelectedFigure(), selectedCell);
+                    game.deselectFigure();
+                }
+                if (game.getSelectedFigure() != null)
+                    Rasterization.drawPossibleMoves(field.getGraphicsContext2D(), game.getBoard(), game.getSelectedFigure());
+                else {
+                    gameFinished = game.checkWin();
+                    Rasterization.drawBoard(field.getGraphicsContext2D(), game.getBoard());
+                }
+                if (gameFinished) {
+                    showWinDialog();
+                }
             }
         }
     }
+
     private void showWinDialog() {
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setHeaderText(null);
@@ -85,6 +88,7 @@ public class MainWindowController {
     private int getNormalizedY(double y) {
         return (int) (y / field.getHeight() * game.getBoard().getSizeY());
     }
+
     @FXML
     void quit() {
         Stage stage = (Stage) field.getScene().getWindow();

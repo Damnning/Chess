@@ -30,6 +30,7 @@ public enum Direction {
             case UP_LEFT -> d8;
         };
     }
+
     public Direction getClockwiseHalf() {
         return getHalf(UP_RIGHT, RIGHT, DOWN_RIGHT, DOWN, DOWN_LEFT, LEFT, UP_LEFT, UP);
     }

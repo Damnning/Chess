@@ -15,7 +15,7 @@ public class King extends Figure {
     public void calculateMoves(Consumer<Cell> consumer) {
         for (Direction direction : Direction.values()) {
             Cell cell = position.get(direction);
-            if(cell != null)
+            if (cell != null)
                 consumer.accept(cell);
         }
     }

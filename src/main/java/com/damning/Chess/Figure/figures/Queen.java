@@ -6,6 +6,7 @@ import com.damning.chess.figure.Figure;
 
 import java.util.List;
 import java.util.function.Consumer;
+
 import static com.damning.chess.chessboard.ChessBoardUtils.getLine;
 
 public class Queen extends Figure {

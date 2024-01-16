@@ -16,43 +16,58 @@ public abstract class Figure {
     protected final byte color;
     protected Cell position;
     protected List<Cell> possibleMoves;
-
     protected List<Cell> possibleAttacks;
     protected List<Cell> potentialAttacks;
     protected int movesCount;
-    public Player getPlayer() {
-        return player;
-    }
-    public void setPlayer(Player player) {
-        this.player = player;
-    }
-
-    public String getName() {
-        return this.getClass().getSimpleName().toLowerCase();
-    }
-
-    public Cell getPosition() {
-        return position;
-    }
-
-    public List<Cell> getPossibleMoves() {
-        return possibleMoves;
-    }
-
-    public void setPosition(Cell position) {
-        this.position = position;
-    }
 
     /**
      * @param position - position of the figure
      * @param color    - color of the figure as number 0-9
      */
     public Figure(Cell position, byte color) {
-        possibleAttacks = new ArrayList<>();
         movesCount = 0;
         this.position = position;
         this.color = color;
     }
+
+    public Player getPlayer() {
+        return player;
+    }
+
+    public void setPlayer(Player player) {
+        this.player = player;
+    }
+
+    public void setBoard(ChessBoard board) {
+        this.board = board;
+    }
+
+    public byte getColor() {
+        return color;
+    }
+
+    public Cell getPosition() {
+        return position;
+    }
+
+    public void setPosition(Cell position) {
+        this.position = position;
+    }
+
+    public List<Cell> getPossibleMoves() {
+        return possibleMoves;
+    }
+
+    public void calculatePossibleMoves() {
+        possibleAttacks = new ArrayList<>();
+        possibleMoves = new ArrayList<>();
+        calculateMoves(this::addMove);
+    }
+
+    public String getName() {
+        return this.getClass().getSimpleName().toLowerCase();
+    }
+
 
     public void calculatePotentialAttacks() {
         potentialAttacks = new ArrayList<>();
@@ -63,11 +78,6 @@ public abstract class Figure {
         });
     }
 
-    public void calculatePossibleMoves() {
-        possibleAttacks = new ArrayList<>();
-        possibleMoves = new ArrayList<>();
-        calculateMoves(this::addMove);
-    }
 
     abstract public void calculateMoves(Consumer<Cell> consumer);
 
@@ -103,7 +113,7 @@ public abstract class Figure {
             switchCell(to);
             Cell kingPosition = board.getKing(color).getPosition();
             for (Figure figure : board.getFigures()) {
-                if(figure.getPosition() != null){
+                if (figure.getPosition() != null) {
                     figure.calculatePotentialAttacks();
                     //System.out.println(figure);
                     if (figure.potentialAttacks.contains(kingPosition)) {
@@ -121,18 +131,11 @@ public abstract class Figure {
     }
 
 
-    public byte getColor() {
-        return color;
-    }
-
     @Override
     public String toString() {
         return this.getClass().getSimpleName() + " " + color;
     }
 
-    public void setBoard(ChessBoard board) {
-        this.board = board;
-    }
 
     public boolean canMoveTo(Cell selectedCell) {
         return possibleMoves.contains(selectedCell) || possibleAttacks.contains(selectedCell);

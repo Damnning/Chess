@@ -16,7 +16,7 @@ public class Tower extends Figure {
     @Override
     public void calculateMoves(Consumer<Cell> consumer) {
         for (Direction direction : Direction.getVerticals()) {
-            for(Cell cell:getLine(position, direction)){
+            for (Cell cell : getLine(position, direction)) {
                 consumer.accept(cell);
             }
         }

@@ -1,21 +1,21 @@
 package com.damning.chess.chessboard;
 
 public interface BoardTokens {
-    final String SEPARATOR = "---";
+    String SEPARATOR = "---";
     // Cell tokens
-    final String SPACE = "_";
-    final String EMPTY = "*";
-    final String BLOCKED = "x";
-    final String UP = "u";
-    final String DOWN = "d";
-    final String LEFT = "l";
-    final String RIGHT = "r";
+    String SPACE = "_";
+    String EMPTY = "*";
+    String BLOCKED = "x";
+    String UP = "u";
+    String DOWN = "d";
+    String LEFT = "l";
+    String RIGHT = "r";
 
     // Figure tokens
-    final String KING = "k";
-    final String QUEEN = "q";
-    final String BISHOP = "b";
-    final String HORSE = "h";
-    final String TOWER = "t";
-    final String PAWN = "p";
+    String KING = "k";
+    String QUEEN = "q";
+    String BISHOP = "b";
+    String HORSE = "h";
+    String TOWER = "t";
+    String PAWN = "p";
 }

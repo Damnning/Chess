@@ -1,9 +1,7 @@
 package com.damning.chess.chessboard;
 
 import com.damning.chess.enums.Direction;
-import com.damning.chess.figure.Figure;
 import com.damning.chess.figure.figures.*;
-
 import java.io.BufferedInputStream;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -47,7 +45,6 @@ public class ChessBoardUtils implements BoardTokens {
 
     public static ChessBoard readBoardFromFile(String path) {
         List<Direction> pawnDirections = new ArrayList<>();
-        List<Figure> figures = new ArrayList<>();
         String[][] board = readBoardArrayFromFile(path, pawnDirections);
         Cell[][] cells = new Cell[board.length][board[0].length];
         Cell head = null;
@@ -55,7 +52,7 @@ public class ChessBoardUtils implements BoardTokens {
         for (int i = 0; i < board.length; i++) {
             for (int j = 0; j < board[0].length; j++) {
                 cells[i][j] = parseToken(board[i][j], i, j, pawnDirections);
-                if(head == null) {
+                if (head == null) {
                     head = cells[i][j];
                     chessBoard = new ChessBoard(cells[i][j]);
                 }
@@ -95,7 +92,7 @@ public class ChessBoardUtils implements BoardTokens {
     }
 
     private static void addNeighbors(Cell[][] cells, int y, int x, String[][] tokens) {
-        if(cells[y][x] == null) return;
+        if (cells[y][x] == null) return;
         if (x > 0) {
             if (!tokens[y][x].endsWith(LEFT) && !tokens[y][x - 1].endsWith(RIGHT))
                 cells[y][x].setLeft(cells[y][x - 1]);
