@@ -7,7 +7,6 @@ import com.damning.chess.figure.figures.*;
 import java.io.BufferedInputStream;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
-import java.time.Year;
 import java.util.*;
 
 public class ChessBoardUtils implements BoardTokens {
@@ -60,17 +59,22 @@ public class ChessBoardUtils implements BoardTokens {
                     head = cells[i][j];
                     chessBoard = new ChessBoard(cells[i][j]);
                 }
+
+            }
+        }
+        assert chessBoard != null;
+        for (int i = 0; i < cells.length; i++) {
+            for (int j = 0; j < cells[0].length; j++) {
+                addNeighbors(cells, i, j, board);
                 if (cells[i][j] != null && cells[i][j].getFigure() != null) {
                     chessBoard.addFigure(cells[i][j].getFigure());
                     cells[i][j].getFigure().setBoard(chessBoard);
                 }
             }
         }
-        for (int i = 0; i < cells.length; i++) {
-            for (int j = 0; j < cells[0].length; j++) {
-                addNeighbors(cells, i, j, board);
-            }
-        }
+        chessBoard.setSizeX(cells[0].length);
+        chessBoard.setSizeY(cells.length);
+        chessBoard.setPlayersCount((byte) pawnDirections.size());
         return chessBoard;
     }
 
@@ -90,13 +94,13 @@ public class ChessBoardUtils implements BoardTokens {
         return cell;
     }
 
-    private static void addNeighbors(Cell[][] cells, int x, int y, String[][] tokens) {
-        if(cells[x][y] == null) return;
+    private static void addNeighbors(Cell[][] cells, int y, int x, String[][] tokens) {
+        if(cells[y][x] == null) return;
         if (x > 0) {
             if (!tokens[y][x].endsWith(LEFT) && !tokens[y][x - 1].endsWith(RIGHT))
                 cells[y][x].setLeft(cells[y][x - 1]);
         }
-        if (x < cells.length - 1) {
+        if (x < cells[0].length - 1) {
             if (!tokens[y][x].endsWith(RIGHT) && !tokens[y][x + 1].endsWith(LEFT))
                 cells[y][x].setRight(cells[y][x + 1]);
         }
@@ -104,7 +108,7 @@ public class ChessBoardUtils implements BoardTokens {
             if (!tokens[y][x].endsWith(UP) && !tokens[y - 1][x].endsWith(DOWN))
                 cells[y][x].setUp(cells[y - 1][x]);
         }
-        if (y < cells[0].length - 1) {
+        if (y < cells.length - 1) {
             if (!tokens[y][x].endsWith(DOWN) && !tokens[y + 1][x].endsWith(UP))
                 cells[y][x].setDown(cells[y + 1][x]);
         }
@@ -122,10 +126,10 @@ public class ChessBoardUtils implements BoardTokens {
                 cell.setFigure(new Bishop(cell, player));
                 break;
             case HORSE:
-                cell.setFigure(new Knight(cell, player));
+                cell.setFigure(new Horse(cell, player));
                 break;
             case TOWER:
-                cell.setFigure(new Rook(cell, player));
+                cell.setFigure(new Tower(cell, player));
                 break;
             case PAWN:
                 cell.setFigure(new Pawn(cell, player, pawnDirection));
@@ -154,8 +158,8 @@ public class ChessBoardUtils implements BoardTokens {
         if (current != null) {
             current = current.get(direction);
             if (current != null) {
-                assert direction.getClockwise() != null;
-                Cell aux = current.get(direction.getClockwise());
+                assert direction.getHalf() != null;
+                Cell aux = current.get(direction.getHalf());
                 if (aux != null) {
                     cells.add(aux);
                 }

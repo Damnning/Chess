@@ -5,18 +5,17 @@ import com.damning.chess.enums.Direction;
 import com.damning.chess.figure.Figure;
 
 import java.util.function.Consumer;
+import static com.damning.chess.chessboard.ChessBoardUtils.getKnightCells;
 
-import static com.damning.chess.chessboard.ChessBoardUtils.getLine;
-
-public class Rook extends Figure {
-    public Rook(Cell position, byte color) {
+public class Horse extends Figure {
+    public Horse(Cell position, byte color) {
         super(position, color);
     }
 
     @Override
     public void calculateMoves(Consumer<Cell> consumer) {
-        for (Direction direction : Direction.getVerticals()) {
-            for(Cell cell:getLine(position, direction)){
+        for(Direction direction: Direction.getVerticals()){
+            for (Cell cell: getKnightCells(position, direction)) {
                 consumer.accept(cell);
             }
         }

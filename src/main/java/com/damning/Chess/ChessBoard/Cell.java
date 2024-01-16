@@ -12,6 +12,7 @@ public class Cell {
     private Cell down;
     private Cell left;
     private Cell right;
+
     public Cell get(Direction direction) {
         return switch (direction) {
             case UP -> up;
@@ -29,37 +30,59 @@ public class Cell {
         this(x, y, null);
 
     }
+
     public Cell getUpLeft() {
-        if(up != null && up.left != null) return up.left;
-        if(left != null) return left.up;
-        return null;
-    }
-    private Cell getUpRight() {
-        if(up != null && up.right != null) return up.right;
-        if(right != null) return right.up;
-        return null;
-    }
-    private Cell getDownLeft() {
-        if(down != null && down.left != null) return down.left;
-        if(left != null) return left.down;
-        return null;
-    }
-    private Cell getDownRight() {
-        if(down != null && down.right != null) return down.right;
-        if(right != null) return right.down;
+        if (up != null && up.left != null) return up.left;
+        if (left != null) return left.up;
         return null;
     }
 
+    public Cell getUpRight() {
+        if (up != null && up.right != null) return up.right;
+        if (right != null) return right.up;
+        return null;
+    }
+
+    public Cell getDownLeft() {
+        if (down != null && down.left != null) return down.left;
+        if (left != null) return left.down;
+        return null;
+    }
+
+    public Cell getDownRight() {
+        if (down != null && down.right != null) return down.right;
+        if (right != null) return right.down;
+        return null;
+    }
+
+    public Cell getUp() {
+        return up;
+    }
+
+    public Cell getDown() {
+        return down;
+    }
+
+    public Cell getLeft() {
+        return left;
+    }
+
+    public Cell getRight() {
+        return right;
+    }
 
     public void setUp(Cell up) {
         this.up = up;
     }
+
     public void setDown(Cell down) {
         this.down = down;
     }
+
     public void setLeft(Cell left) {
         this.left = left;
     }
+
     public void setRight(Cell right) {
         this.right = right;
     }
@@ -70,11 +93,11 @@ public class Cell {
         this.figure = figure;
     }
 
-    int getX() {
+    public int getX() {
         return x;
     }
 
-    int getY() {
+    public int getY() {
         return y;
     }
 
@@ -98,5 +121,9 @@ public class Cell {
         return this.x == other.x && this.y == other.y;
     }
 
+    @Override
+    public String toString() {
+        return x + " " + y + "; ";
+    }
 
 }

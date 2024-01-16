@@ -2,8 +2,8 @@ package com.damning.chess.figure;
 
 import com.damning.chess.chessboard.Cell;
 import com.damning.chess.chessboard.ChessBoard;
+import com.damning.chess.player.Player;
 
-import com.damning.chess.enums.MoveStatus;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -11,6 +11,7 @@ import java.util.List;
 import java.util.function.Consumer;
 
 public abstract class Figure {
+    Player player;
     protected ChessBoard board;
     protected final byte color;
     protected Cell position;
@@ -19,10 +20,23 @@ public abstract class Figure {
     protected List<Cell> possibleAttacks;
     protected List<Cell> potentialAttacks;
     protected int movesCount;
+    public Player getPlayer() {
+        return player;
+    }
+    public void setPlayer(Player player) {
+        this.player = player;
+    }
 
+    public String getName() {
+        return this.getClass().getSimpleName().toLowerCase();
+    }
 
     public Cell getPosition() {
         return position;
+    }
+
+    public List<Cell> getPossibleMoves() {
+        return possibleMoves;
     }
 
     public void setPosition(Cell position) {
@@ -31,7 +45,7 @@ public abstract class Figure {
 
     /**
      * @param position - position of the figure
-     * @param color - color of the figure as number 0-9
+     * @param color    - color of the figure as number 0-9
      */
     public Figure(Cell position, byte color) {
         possibleAttacks = new ArrayList<>();
@@ -50,19 +64,23 @@ public abstract class Figure {
     }
 
     public void calculatePossibleMoves() {
+        possibleAttacks = new ArrayList<>();
         possibleMoves = new ArrayList<>();
         calculateMoves(this::addMove);
     }
 
-    abstract public void calculateMoves(Consumer<Cell> consumer); // todo: think about transmitting board
+    abstract public void calculateMoves(Consumer<Cell> consumer);
 
-    public MoveStatus move(Cell to) {
+    public void move(Cell to) {
         if (possibleMoves.contains(to)) {
             switchCell(to);
             movesCount++;
-            return MoveStatus.SUCCESS;
+        } else if (possibleAttacks.contains(to)) {
+            board.getFigures().remove(to.getFigure());
+            to.getFigure().getPlayer().getFigures().remove(to.getFigure());
+            switchCell(to);
+            movesCount++;
         }
-        return MoveStatus.ILLEGAL;
     }
 
     protected void switchCell(Cell to) {
@@ -78,21 +96,25 @@ public abstract class Figure {
         }
     }
 
-    private boolean checkPosition(Cell to, ChessBoard board) {
+    protected boolean checkPosition(Cell to, ChessBoard board) {
         if (to != null) {
             Cell previousPosition = position;
             Figure toFigure = to.getFigure();
-            Cell kingPosition = board.getKing(color).getPosition();
             switchCell(to);
+            Cell kingPosition = board.getKing(color).getPosition();
             for (Figure figure : board.getFigures()) {
-                figure.calculatePotentialAttacks();
-                //System.out.println(figure);
-                if (figure.potentialAttacks.contains(kingPosition)) {
-                    switchCell(previousPosition);
-                    to.setFigure(toFigure);
-                    return false;
+                if(figure.getPosition() != null){
+                    figure.calculatePotentialAttacks();
+                    //System.out.println(figure);
+                    if (figure.potentialAttacks.contains(kingPosition)) {
+                        switchCell(previousPosition);
+                        to.setFigure(toFigure);
+                        return false;
+                    }
                 }
             }
+            switchCell(previousPosition);
+            to.setFigure(toFigure);
             return true;
         }
         return false;
@@ -102,6 +124,7 @@ public abstract class Figure {
     public byte getColor() {
         return color;
     }
+
     @Override
     public String toString() {
         return this.getClass().getSimpleName() + " " + color;
@@ -109,5 +132,13 @@ public abstract class Figure {
 
     public void setBoard(ChessBoard board) {
         this.board = board;
+    }
+
+    public boolean canMoveTo(Cell selectedCell) {
+        return possibleMoves.contains(selectedCell) || possibleAttacks.contains(selectedCell);
+    }
+
+    public List<Cell> getPossibleAttacks() {
+        return possibleAttacks;
     }
 }
