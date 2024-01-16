@@ -3,6 +3,7 @@
 |       | Up | Right | Down | Left |
 |-------|----|-------|------|------|
 | Token | u  | r     | d    | l    |
+
 Custom chess board should be described in next format:
 Firstly file should contain description players' pawns directions. It's described in next format:\
 '0_d\
