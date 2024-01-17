@@ -3,13 +3,16 @@ package application.controller;
 import application.rasterization.Rasterization;
 import com.damning.chess.chessboard.Cell;
 import com.damning.chess.chessboard.ChessBoardUtils;
+import com.damning.chess.enums.PlayerColor;
 import com.damning.chess.game.Game;
+import javafx.beans.value.ChangeListener;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.control.Alert;
+import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
 
 import javafx.stage.Stage;
@@ -18,6 +21,8 @@ import java.io.IOException;
 import java.util.Objects;
 
 public class MainWindowController {
+    @FXML
+    private Label currentPlayer;
     Game game;
     String path;
     boolean gameFinished = false;
@@ -45,6 +50,10 @@ public class MainWindowController {
         game = new Game(ChessBoardUtils.readBoardFromFile(path));
         game.start();
         Rasterization.drawBoard(field.getGraphicsContext2D(), game.getBoard());
+        nextTurn();
+    }
+    private void nextTurn() {
+        currentPlayer.setText("Turn: " + PlayerColor.values()[game.getCurrentPlayer().getColor()].toString().toLowerCase() + " player");
     }
 
     @FXML
@@ -69,6 +78,7 @@ public class MainWindowController {
                 if (gameFinished) {
                     showWinDialog();
                 }
+                nextTurn();
             }
         }
     }
@@ -77,7 +87,7 @@ public class MainWindowController {
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setHeaderText(null);
         alert.setTitle("Game finished");
-        alert.setContentText("Player " + game.getPlayers().get(0).getColor() + " won!");
+        alert.setContentText("Player " + PlayerColor.values()[game.getPlayers().get(0).getColor()].toString().toLowerCase() + " won!");
         alert.show();
     }
 

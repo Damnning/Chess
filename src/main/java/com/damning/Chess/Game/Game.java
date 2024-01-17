@@ -4,6 +4,7 @@ import com.damning.chess.chessboard.Cell;
 import com.damning.chess.chessboard.ChessBoard;
 import com.damning.chess.figure.Figure;
 import com.damning.chess.player.Player;
+import javafx.scene.LightBase;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -114,4 +115,7 @@ public class Game {
         nextTurn();
     }
 
+    public Player getCurrentPlayer() {
+        return currentPlayer;
+    }
 }

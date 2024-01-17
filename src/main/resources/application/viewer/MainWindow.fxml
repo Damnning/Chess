@@ -33,14 +33,16 @@
 -->
 
 <?import javafx.scene.canvas.Canvas?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Menu?>
 <?import javafx.scene.control.MenuBar?>
 <?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.control.SeparatorMenuItem?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 
-<VBox prefHeight="649.0" prefWidth="672.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.controller.MainWindowController">
+<VBox prefHeight="701.0" prefWidth="723.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.controller.MainWindowController">
   <children>
     <MenuBar VBox.vgrow="NEVER">
       <menus>
@@ -53,9 +55,14 @@
         </Menu>
       </menus>
     </MenuBar>
-    <AnchorPane maxHeight="-1.0" maxWidth="-1.0" prefHeight="624.0" prefWidth="579.0" VBox.vgrow="ALWAYS">
+    <AnchorPane maxHeight="-1.0" maxWidth="-1.0" prefHeight="605.0" prefWidth="654.0" VBox.vgrow="ALWAYS">
          <children>
-            <Canvas fx:id="field" height="605.0" layoutX="50.0" layoutY="14.0" onMouseClicked="#onCanvasClicked" width="572.0" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="50.0" AnchorPane.rightAnchor="50.0" AnchorPane.topAnchor="14.0" />
+            <Canvas fx:id="field" height="605.0" layoutX="76.0" layoutY="57.0" onMouseClicked="#onCanvasClicked" width="572.0" AnchorPane.bottomAnchor="14.0" AnchorPane.leftAnchor="76.0" AnchorPane.rightAnchor="75.0" AnchorPane.topAnchor="57.0" />
+            <Label fx:id="currentPlayer" layoutX="76.0" layoutY="14.0" prefHeight="31.0" prefWidth="246.0">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Label>
          </children></AnchorPane>
   </children>
 </VBox>
