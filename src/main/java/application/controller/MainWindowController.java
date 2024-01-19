@@ -1,11 +1,10 @@
 package application.controller;
 
 import application.rasterization.Rasterization;
-import com.damning.chess.chessboard.Cell;
-import com.damning.chess.chessboard.ChessBoardUtils;
-import com.damning.chess.enums.PlayerColor;
-import com.damning.chess.game.Game;
-import javafx.beans.value.ChangeListener;
+import com.damning.chesst.chessboardt.Cell;
+import com.damning.chesst.chessboardt.ChessBoardUtils;
+import com.damning.chesst.enumst.PlayerColor;
+import com.damning.chesst.gamet.Game;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;

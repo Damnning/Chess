@@ -1,8 +1,8 @@
-package com.damning.chess.chessboard;
+package com.damning.chesst.chessboardt;
 
 
-import com.damning.chess.enums.Direction;
-import com.damning.chess.figure.Figure;
+import com.damning.chesst.enumst.Direction;
+import com.damning.chesst.figuret.Figure;
 
 /**
  * Cell of the board

@@ -1,8 +1,8 @@
-package com.damning.chess.figure.figures;
+package com.damning.chesst.figuret.figures;
 
-import com.damning.chess.chessboard.Cell;
-import com.damning.chess.enums.Direction;
-import com.damning.chess.figure.Figure;
+import com.damning.chesst.chessboardt.Cell;
+import com.damning.chesst.enumst.Direction;
+import com.damning.chesst.figuret.Figure;
 
 import java.util.ArrayList;
 import java.util.function.Consumer;

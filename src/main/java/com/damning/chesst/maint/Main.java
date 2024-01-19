@@ -1,4 +1,4 @@
-package com.damning.chess.main;
+package com.damning.chesst.maint;
 
 import application.viewer.ChessViewer;
 

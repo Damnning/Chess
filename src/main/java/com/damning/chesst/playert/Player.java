@@ -1,6 +1,6 @@
-package com.damning.chess.player;
+package com.damning.chesst.playert;
 
-import com.damning.chess.figure.Figure;
+import com.damning.chesst.figuret.Figure;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -1,10 +1,9 @@
-package com.damning.chess.game;
+package com.damning.chesst.gamet;
 
-import com.damning.chess.chessboard.Cell;
-import com.damning.chess.chessboard.ChessBoard;
-import com.damning.chess.figure.Figure;
-import com.damning.chess.player.Player;
-import javafx.scene.LightBase;
+import com.damning.chesst.chessboardt.Cell;
+import com.damning.chesst.chessboardt.ChessBoard;
+import com.damning.chesst.figuret.Figure;
+import com.damning.chesst.playert.Player;
 
 import java.util.ArrayList;
 import java.util.List;
