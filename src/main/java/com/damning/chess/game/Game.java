@@ -1,9 +1,9 @@
-package com.damning.chesst.gamet;
+package com.damning.chess.game;
 
-import com.damning.chesst.chessboardt.Cell;
-import com.damning.chesst.chessboardt.ChessBoard;
-import com.damning.chesst.figuret.Figure;
-import com.damning.chesst.playert.Player;
+import com.damning.chess.chessboard.Cell;
+import com.damning.chess.chessboard.ChessBoard;
+import com.damning.chess.figure.Figure;
+import com.damning.chess.player.Player;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -1,7 +1,7 @@
-package com.damning.chesst.chessboardt;
+package com.damning.chess.chessboard;
 
-import com.damning.chesst.enumst.Direction;
-import com.damning.chesst.figuret.figures.*;
+import com.damning.chess.enums.Direction;
+import com.damning.chess.figure.figures.*;
 import java.io.BufferedInputStream;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;

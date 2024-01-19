@@ -1,9 +1,9 @@
 package application.rasterization;
 
-import com.damning.chesst.chessboardt.Cell;
-import com.damning.chesst.chessboardt.ChessBoard;
-import com.damning.chesst.enumst.Direction;
-import com.damning.chesst.figuret.Figure;
+import com.damning.chess.chessboard.Cell;
+import com.damning.chess.chessboard.ChessBoard;
+import com.damning.chess.enums.Direction;
+import com.damning.chess.figure.Figure;
 
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;

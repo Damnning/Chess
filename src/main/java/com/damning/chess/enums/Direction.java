@@ -1,4 +1,4 @@
-package com.damning.chesst.enumst;
+package com.damning.chess.enums;
 
 /**
  * Directions for getting neighbor cells

@@ -1,7 +1,7 @@
-package com.damning.chesst.chessboardt;
+package com.damning.chess.chessboard;
 
-import com.damning.chesst.figuret.Figure;
-import com.damning.chesst.figuret.figures.King;
+import com.damning.chess.figure.Figure;
+import com.damning.chess.figure.figures.King;
 
 import java.util.ArrayDeque;
 import java.util.ArrayList;

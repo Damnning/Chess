@@ -1,4 +1,4 @@
-package com.damning.chesst.chessboardt;
+package com.damning.chess.chessboard;
 
 /**
  * Token constants for board parsing

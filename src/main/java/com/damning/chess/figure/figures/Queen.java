@@ -1,13 +1,13 @@
-package com.damning.chesst.figuret.figures;
+package com.damning.chess.figure.figures;
 
-import com.damning.chesst.chessboardt.Cell;
-import com.damning.chesst.enumst.Direction;
-import com.damning.chesst.figuret.Figure;
+import com.damning.chess.chessboard.Cell;
+import com.damning.chess.enums.Direction;
+import com.damning.chess.figure.Figure;
 
 import java.util.List;
 import java.util.function.Consumer;
 
-import static com.damning.chesst.chessboardt.ChessBoardUtils.getLine;
+import static com.damning.chess.chessboard.ChessBoardUtils.getLine;
 
 public class Queen extends Figure {
     public Queen(Cell position, byte color) {
