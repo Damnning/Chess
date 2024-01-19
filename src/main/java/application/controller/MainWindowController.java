@@ -21,6 +21,7 @@ import java.io.IOException;
 import java.util.Objects;
 
 public class MainWindowController {
+
     @FXML
     private Label currentPlayer;
     Game game;
@@ -52,8 +53,10 @@ public class MainWindowController {
         Rasterization.drawBoard(field.getGraphicsContext2D(), game.getBoard());
         nextTurn();
     }
+
     private void nextTurn() {
-        currentPlayer.setText("Turn: " + PlayerColor.values()[game.getCurrentPlayer().getColor()].toString().toLowerCase() + " player");
+        if (game != null && game.getCurrentPlayer() != null)
+            currentPlayer.setText("Turn: " + PlayerColor.values()[game.getCurrentPlayer().getColor()].toString().toLowerCase() + " player");
     }
 
     @FXML

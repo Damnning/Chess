@@ -106,21 +106,26 @@ public abstract class Figure {
         if (to != null) {
             Cell previousPosition = position;
             Figure toFigure = to.getFigure();
+            if(toFigure != null)
+                toFigure.setPosition(null);
             switchCell(to);
             Cell kingPosition = board.getKing(color).getPosition();
             for (Figure figure : board.getFigures()) {
                 if (figure.getPosition() != null) {
                     figure.calculatePotentialAttacks();
-                    //System.out.println(figure);
                     if (figure.potentialAttacks.contains(kingPosition)) {
                         switchCell(previousPosition);
                         to.setFigure(toFigure);
+                        if(toFigure != null)
+                            toFigure.setPosition(to);
                         return false;
                     }
                 }
             }
             switchCell(previousPosition);
             to.setFigure(toFigure);
+            if(toFigure != null)
+                toFigure.setPosition(to);
             return true;
         }
         return false;

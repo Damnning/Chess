@@ -12,7 +12,6 @@ public enum Direction {
     UP_LEFT,
     DOWN_RIGHT,
     DOWN_LEFT;
-
     public static Direction[] getDiagonals() {
         return new Direction[]{UP_RIGHT, UP_LEFT, DOWN_RIGHT, DOWN_LEFT};
     }
